@@ -94,3 +94,7 @@ body {
     box-shadow: none;
     word-break: normal;
 }
+
+.sidebar-component {
+    padding-left: 5px;
+}

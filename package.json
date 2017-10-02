@@ -5,13 +5,18 @@
   "dependencies": {
     "@blueprintjs/core": "^1.29.0",
     "codemirror": "^5.30.0",
+    "event-emitter": "^0.3.5",
     "material-ui": "^0.19.2",
+    "promise": "^8.0.1",
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-codemirror2": "^2.0.2",
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.14",
-    "react-split-pane": "^0.1.66"
+    "react-split-pane": "^0.1.66",
+    "socket.io-client": "^2.0.3",
+    "uuid": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

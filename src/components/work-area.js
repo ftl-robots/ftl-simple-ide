@@ -8,7 +8,7 @@ class WorkArea extends Component {
         return (
             <SplitPane defaultSize="80%">
                 <SimpleEditor />
-                <Sidebar />
+                <Sidebar {...this.props}/>
             </SplitPane>
         );
     }

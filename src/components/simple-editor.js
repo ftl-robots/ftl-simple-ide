@@ -3,6 +3,7 @@ import CodeMirror from 'react-codemirror2'
 import 'codemirror/mode/clike/clike';
 import 'codemirror/addon/edit/matchbrackets';
 import 'codemirror/addon/edit/closebrackets';
+import API from '../api';
 
 var DEFAULT_EDITOR_OPTIONS = {
     lineNumbers: true,
@@ -16,12 +17,38 @@ var DEFAULT_EDITOR_OPTIONS = {
 };
 
 class SimpleEditor extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            editorContent: ''
+        };
+
+        // Set up API
+        API.on('fileUpdated', (update) => {
+            this.setState({
+                editorContent: update.content
+            });
+        });
+
+        API.getRemoteFile()
+        .then((newContent) => {
+            this.setState({
+                editorContent: newContent
+            });
+        })
+    }
+
+    componentWillUnmount() {
+        API.off('fileUpdated');
+    }
+
     render() {
         return (
             <CodeMirror
-              options={DEFAULT_EDITOR_OPTIONS}
-              onChange={(editor, metadata, value) => {
-              }}
+                value={this.state.editorContent}
+                options={DEFAULT_EDITOR_OPTIONS}
+                onChange={(editor, metadata, value) => {
+                }}
             />
         );
     }
